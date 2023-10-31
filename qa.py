@@ -33,7 +33,10 @@ with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
 store.index = index
-chain = RetrievalQAWithSourcesChain.from_chain_type(llm=local_llm, retriever=store.as_retriever(), return_source_documents=True)
+chain = RetrievalQAWithSourcesChain.from_chain_type(
+    llm=local_llm, retriever=store.as_retriever(),
+    return_source_documents=True
+)
 result = chain({"question": "How do I request vacation??"})
 print(f"Answer: {result['answer']}")
 print(f"Sources: {result['sources']}")

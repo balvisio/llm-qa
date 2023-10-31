@@ -6,9 +6,15 @@ from langchain.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
 import pickle
 
+# PATH_TO_DOCUMENTS = "Notion_DB/"
+# INDEX_NAME = "notion.index"
+# STORE_NAME = "notion.pkl"
 
+PATH_TO_DOCUMENTS = "trainual/"
+INDEX_NAME = "trainual.index"
+STORE_NAME = "trainual.pkl"
 # Here we load in the data in the format that Notion exports it in.
-ps = list(Path("Notion_DB/").glob("**/*.md"))
+ps = list(Path(PATH_TO_DOCUMENTS).glob("**/*.md"))
 
 data = []
 sources = []
@@ -29,9 +35,9 @@ for i, d in enumerate(data):
 
 # Here we create a vector store from the documents and save it to disk.
 store = FAISS.from_texts(docs, HuggingFaceEmbeddings(), metadatas=metadatas)
-faiss.write_index(store.index, "docs.index")
+faiss.write_index(store.index, INDEX_NAME)
 store.index = None
-with open("faiss_store.pkl", "wb") as f:
+with open(STORE_NAME, "wb") as f:
     pickle.dump(store, f)
 
 
