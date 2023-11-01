@@ -1,5 +1,13 @@
 # Using this repo
 
+# Setup
+
+In your virtual environment run:
+
+```
+pip install -r requirements.txt
+```
+
 # Creating a vectorized version of the content
 
 We build a vectorized data store to allow the model

@@ -1,9 +1,3 @@
-transformers
+faiss-cpu
 langchain
-tiktoken
-chromadb
-pypdf
-InstructorEmbedding
-accelerate
-bitsandbytes
 sentence-transformers
